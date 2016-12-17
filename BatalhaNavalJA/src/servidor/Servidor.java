@@ -26,7 +26,7 @@ public class Servidor {
         this.gui = gui;
         this.carregador = new CarregadorUsuarios();
         try {
-            this.usuarios = this.carregador.listarUsuarios("Usuarios.xml");
+            this.usuarios = this.carregador.listarUsuarios("C:\\Users\\Amora\\Documents\\Mestrado - Materiais\\Eng de SW\\BatalhaNaval\\implementacao\\workspace\\Servidor\\src\\servidor\\Usuarios.xml");
         } catch (IOException ex) {
             Logger.getLogger(Servidor.class.getName()).log(Level.SEVERE, null, ex);
         } catch (SAXException ex) {
@@ -90,7 +90,6 @@ public class Servidor {
         Mensagem mensagemLida = (Mensagem) stream.fromXML(msg);
         System.out.println("recebendo xml = " + stream.toXML(mensagemLida));
         InterpretadorMensagem interpretador = new InterpretadorMensagem(this,mensagemLida,cliente);
-        //this.interpretarMensagem(mensagemLida, cliente);
     }
 
     public String getNomesJogadores(){
