@@ -8,7 +8,7 @@
 	/**
 	* @author Amora
 	*/
-	public class Inteligencia extends MovieClip{
+	public class Inteligencia extends MovieClip {
 		
 		private var tabuleiro:Tabuleiro; //Tabuleiro da inteligencia
 		private var matrizOponente:Array; // Essa eh a matriz que representa o que a inteligencia conhece da matriz de seu oponente (o humano).

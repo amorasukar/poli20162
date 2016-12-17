@@ -42,13 +42,9 @@
 		public function Principal() {
 			this.socket = new XMLSocket();
 			this.socket.addEventListener(DataEvent.DATA, receberMensagem);
-			//this.socket.addEventListener(Event.CONNECT, conectarCliente);
-			//this.socket.connect("localhost", 8090);
-			
-			this.alvo = alvo_mc;	
-			
+			this.alvo = alvo_mc;
 			this.introducao = this.attacharTela("ControleIntroducao", true);
-			this.introducao.addEventListener(EventosBatalhaNaval.INTRODUCAOPASSARTELA, this.irParaRegras);					
+			this.introducao.addEventListener(EventosBatalhaNaval.INTRODUCAOPASSARTELA, this.irParaLogin);					
 		}
 		
 		private function receberMensagem(e:DataEvent):void {			
@@ -267,8 +263,6 @@
 			this.resultado.configurar(tipo);			
 			this.resultado.addEventListener(EventosBatalhaNaval.CONTINUAR, this.continuarJogando);
 			this.resultado.addEventListener(EventosBatalhaNaval.SAIR, this.sair);
-		}						
-				
+		}
 	}
-	
 }

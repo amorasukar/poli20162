@@ -10,10 +10,10 @@ package {
 		
 		
 		public function ControleIntroducao() {
-			this.verRegras_btn.addEventListener(MouseEvent.MOUSE_UP, this.verRegras);
+			this.logar_btn.addEventListener(MouseEvent.MOUSE_UP, this.logar);
 		}
 		
-		private function verRegras(e:MouseEvent):void {
+		private function logar(e:MouseEvent):void {
 			this.dispatchEvent( new EventosBatalhaNaval(EventosBatalhaNaval.INTRODUCAOPASSARTELA) );
 		}
 	}

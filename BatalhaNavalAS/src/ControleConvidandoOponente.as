@@ -120,40 +120,6 @@
 				}
 				
 			}
-			/*trace("Atualizou estados de " + id1 + " e " + id2);
-			var cont:int = 0;
-			var item1:Object = { Id: id1, Nome: "", Estado: novoEstado };
-			
-			var item2:Object = { Id: id2, Nome: "", Estado: novoEstado };
-			for (var i:int = 0; i < this.jogadores.length; i++) {
-				if ( (this.jogadores.getItemAt(i).Id == id1) || (this.jogadores.getItemAt(i).Id == id2) ) {								
-					this.jogadores.editField(i, "Estado", novoEstado);
-					this.log_txt.text += "-> " + this.jogadores.getItemAt(i).Nome + " mudou o estado para " + novoEstado + ".\n" ;
-					if (++cont == 2) {
-						item2.Nome = this.jogadores.getItemAt(i).Nome;
-						break;
-					}
-					else {
-						item1.Nome = this.jogadores.getItemAt(i).Nome;
-					}					
-				}
-			}
-			if (novoEstado == "Jogando") {
-				cont = 0;
-				for (var j:int = 0; j < this.destinatarios.length; j++) {
-					if ( (this.destinatarios.getItemAt(j).data == id1) || (this.destinatarios.getItemAt(j).data == id2) ) {
-						this.destinatarios.removeItemAt(j);
-						j--;
-						if (++ cont == 2) {
-							break;
-						}
-					}
-				}
-			}
-			else {
-				this.destinatarios.addItem(item1);
-				this.destinatarios.addItem(item2);
-			}*/
 		}
 		
 		private function habilitar(estadoFinal:Boolean):void {
