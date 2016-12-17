@@ -1,0 +1,14 @@
+<root>
+    <usuario>
+        <nome>Amora</nome>
+        <senha>amora</senha>
+    </usuario>
+    <usuario>
+        <nome>Jessica</nome>
+        <senha>jessica</senha>
+    </usuario>
+    <usuario>
+        <nome>Dennis</nome>
+        <senha>vascoehcampeao</senha>
+    </usuario>
+</root>
