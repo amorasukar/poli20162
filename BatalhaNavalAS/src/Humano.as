@@ -1,8 +1,7 @@
 package {
 	
 	/**
-	 * ...
-	 * @author Saulo e Lorena
+	 * @author Amora
 	 */
 	public class Humano extends Jogador {
 		private var _senha:String;
@@ -27,7 +26,5 @@ package {
 		public function set id(value:String):void {
 			_id = value;
 		}
-		
 	}
-	
 }

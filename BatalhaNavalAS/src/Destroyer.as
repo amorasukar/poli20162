@@ -1,8 +1,7 @@
 ﻿package {
 	
 	/**
-	* ...
-	* @author Lorena Tablada
+	* @author Amora
 	*/
 	public class Destroyer extends Embarcacao {
 		

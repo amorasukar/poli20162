@@ -3,8 +3,7 @@
 	import flash.events.Event;
 	import flash.events.MouseEvent;
 	/**
-	* ...
-	* @author Lorena Tablada
+	* @author Amora
 	*/
 	public class SubmarinoFigura extends MovieClip {
 		public var figura:MovieClip;
@@ -26,8 +25,6 @@
 			
 			this.figura.addEventListener(MouseEvent.MOUSE_DOWN, this.iniciarArrasto);
 			this.figura.addEventListener(MouseEvent.MOUSE_UP, this.terminarArrasto);
-			
-			
 		}
 		
 		public function voltarPosicaoInicial():void {
@@ -43,7 +40,6 @@
 		private function terminarArrasto(m:Event):void {
 			this.figura.stopDrag();
 			this.dispatchEvent(new EventosBatalhaNaval(EventosBatalhaNaval.SOLTAREMBARCACAO));
-			//this.dispatchEvent(new Event(EventosBatalhaNaval.SOLTAREMBARCACAO));
 		}
 		
 		public function configurar():void {

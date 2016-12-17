@@ -9,8 +9,7 @@
 	import flash.net.XMLSocket;
 	
 	/**
-	* ...
-	* @author Lorena Tablada
+	* @author Jessica e Amora
 	*/
 	public class Principal extends MovieClip {
 		
@@ -49,21 +48,11 @@
 			this.alvo = alvo_mc;	
 			
 			this.introducao = this.attacharTela("ControleIntroducao", true);
-			this.introducao.addEventListener(EventosBatalhaNaval.INTRODUCAOPASSARTELA, this.irParaRegras);
-						
-			
-			/*this.regras = this.attacharTela("Regras", true);
-			this.regras.addEventListener("Regras_clicarOK", this.clicarOKRegras);*/
-
-			//this.distribuindoFrota = this.attacharTela("DistribuindoFrota", true);			
-			//this.ganhou = this.attacharTela("Ganhou", true);
-			//this.ganhou.addEventListener("continuar", continuarJogando);						
-			
+			this.introducao.addEventListener(EventosBatalhaNaval.INTRODUCAOPASSARTELA, this.irParaRegras);					
 		}
 		
 		private function receberMensagem(e:DataEvent):void {			
 			var xml:XML = new XML(e.data);	
-			//trace("Principal recebeu msg do tipo " + xml.tipo);
 			switch((xml.tipo).toString()) {
 				case "liberacao": 				this.distribuindoFrota.liberar();									
 												break;
@@ -125,8 +114,6 @@
 												break;
 				case "jogada":					this.jogo.executarJogadaOponente(xml.linha, xml.coluna);
 												break;
-				/*case "resultadoJogada":			this.jogo.receberResultadoJogada(xml.texto);
-												break;*/
 				case "joga":					this.jogo.liberarMinhaJogada();
 												break;
 				case "espera":					this.jogo.liberarOponenteJogada();
@@ -174,9 +161,7 @@
 				estados.push(nomes[k]);
 			}
 			nomes.splice( (nomes.length/3), (2*nomes.length/3) );			
-			for (var j:int = 0; j < nomes.length; j++) {
-				/*trace("nomes["+j+"] = " + nomes[j]);
-				trace("ids[" + j + "] = " + ids[j]);*/				
+			for (var j:int = 0; j < nomes.length; j++) {			
 				this.convidandoOponente.adicionarJogador(ids[j], nomes[j], estados[j], novoJogador); 	
 			}			
 		}
@@ -214,13 +199,8 @@
 			this.distribuindoFrota.habilitar(true);
 		}
 		
-		/* Esse método será chamando quando, o OK da tela de Regras for pressionado. */
-		//É preciso adicionar a linha de baixo qdo a tela de regras for criada.
-		//this.regras.addEventListener("Regras_clicarOK", this.clicarOKRegras);
 		private function irParaLogin(e:Event):void {
-			this.login = this.attacharTela("ControleLogin", true);			
-			//this.login.addEventListener(EventosBatalhaNaval.LOGINPASSARTELA, this.setOponenteComputador);			
-			//this.distribuindoFrota = this.attacharTela("DistribuindoFrota", true);		
+			this.login = this.attacharTela("ControleLogin", true);					
 		}
 		
 		private function irParaConvidandoOponente(e:Event = null):void {			

@@ -3,8 +3,7 @@
 	import flash.events.Event;
 	
 	/**
-	* ...
-	* @author Lorena Tablada
+	* @author Jessica
 	*/
 	public class Embarcacao extends MovieClip {
 		
@@ -63,18 +62,6 @@
 			this.dispatchEvent( new Event(EventosBatalhaNaval.ABATEREMBARCACAO) );
 		}
 		
-		/*public function verificarPecaExistente(linha:uint, coluna:uint):Boolean {
-			var retorno:Boolean = false;
-			for (var i:int = 0; i < pecas.length; i++) {
-				if ((pecas[i].linha == linha) && (pecas[i].coluna == coluna)) {
-					retorno = true;
-					break;
-				}
-				
-			}
-			return retorno;
-		}*/
-		
 		public function get nome():String { 
 			return _nome;
 		}
@@ -94,7 +81,5 @@
 		public function set ultimaPecaClicada(value:Peca):void {
 			_ultimaPecaClicada = value;
 		}
-		
 	}
-	
 }

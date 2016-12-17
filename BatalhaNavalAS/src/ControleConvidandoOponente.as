@@ -10,8 +10,7 @@
 	import flash.events.MouseEvent;
 	
 	/**
-	* ...
-	* @author Lorena Tablada
+	* @author Amora
 	*/
 	public class ControleConvidandoOponente extends MovieClip {
 		

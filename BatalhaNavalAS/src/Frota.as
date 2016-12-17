@@ -4,8 +4,7 @@
 	import flash.events.Event;
 	
 	/**
-	* ...
-	* @author Lorena Tablada
+	* @author Amora
 	*/
 	public class Frota extends MovieClip{
 		private var _submarino:Embarcacao;
@@ -23,8 +22,7 @@
 			
 			for (var i:int = 0; i < this.embarcacoes.length; i++) {
 				this.embarcacoes[i].addEventListener(EventosBatalhaNaval.ABATEREMBARCACAO, this.abaterEmbarcacao);
-			}
-			
+			}	
 		}
 		
 		private function abaterEmbarcacao(e:Event):void {
@@ -66,7 +64,5 @@
 		public function get ultimaEmbarcacaoAbatida():Embarcacao { 
 			return _ultimaEmbarcacaoAbatida;
 		}
-		
-	}
-	
+	}	
 }

@@ -5,8 +5,7 @@
 	import flash.events.Event;
 	
 	/**
-	* ...
-	* @author Lorena Tablada
+	* @author Amora
 	*/
 	public class DestroyerFigura extends MovieClip {
 		public var figura:MovieClip;
@@ -20,7 +19,6 @@
 		
 		public function DestroyerFigura() {
 			super();
-			//trace("Lorena comentou todo o construtor de DestroyerFigura.as");
 			this.figura = this.figura_mc;
 			this.figura.visible = true;
 			this.mais90 = this.mais90_mc;
@@ -56,7 +54,6 @@
 		private function terminarArrasto(m:Event):void {
 			this.figura.stopDrag();
 			this.dispatchEvent(new EventosBatalhaNaval(EventosBatalhaNaval.SOLTAREMBARCACAO));
-			//this.dispatchEvent(new Event(EventosBatalhaNaval.SOLTAREMBARCACAO));
 		}
 		
 		public function configurar():void {
@@ -84,8 +81,6 @@
 				this.figura.rotation -= 90;
 				this.orientacao--;
 			}
-			/*var valor:Number = (this.figura.rotation < 0)?(360 - this.figura.rotation):this.figura.rotation;
-			this.orientacao = this.definirOrientacao(valor / 90);-*/
 			
 			if (this.orientacao == -1) {
 				this.orientacao = 3;
@@ -131,7 +126,5 @@
 		public function set orientacao(value:int):void {
 			_orientacao = value;
 		}
-		
 	}
-	
 }

@@ -5,8 +5,7 @@ package {
 	import flash.events.MouseEvent;
 	
 	/**
-	 * ...
-	 * @author Saulo e Lorena
+	 * @author Jessica
 	 */
 	public class CaixaGeral extends MovieClip {
 		private var _campo:TextArea;
@@ -38,7 +37,5 @@ package {
 		public function set ok(value:Button):void {
 			_ok = value;
 		}
-		
 	}
-	
 }

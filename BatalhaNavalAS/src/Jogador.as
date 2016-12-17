@@ -1,8 +1,7 @@
 package {
 	
 	/**
-	 * ...
-	 * @author Saulo e Lorena
+	 * @author Amora
 	 */
 	public class Jogador {
 		public var nome:String;

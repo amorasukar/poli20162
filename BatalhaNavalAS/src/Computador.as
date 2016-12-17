@@ -5,8 +5,7 @@
 	import flash.events.MouseEvent;
 	
 	/**
-	* ...
-	* @author Lorena Tablada
+	* @author Amora
 	*/
 	public class Computador extends Jogador {	
 		private var inteligencia:Inteligencia;
@@ -34,7 +33,5 @@
 		public function abaterEmbarcacao(embarcacao:Embarcacao):void {
 			this.inteligencia.abaterEmbarcacao(embarcacao);
 		}
-								
 	}
-	
 }

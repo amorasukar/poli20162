@@ -9,7 +9,7 @@
 	
 	/**
 	* ...
-	* @author Lorena Tablada
+	* @author Jessica
 	*/
 	public class ControleDistribuindoFrota extends MovieClip{
 		
@@ -163,38 +163,16 @@
 		}
 		
 		private function configurar():void {
-			/*this.frota_mc.submarinoLinha_mc.visible =
-			this.frota_mc.destroyerLinha_mc.visible =
-			this.frota_mc.portaAvioesLinha_mc.visible = false;*/
-			
 			if (this.tipoOponente == "Computador") {
 				this.fala.enabled =
 				this.fala.editable =
 				this.fala.mouseEnabled = false;				
-			}/*else {*/
-				//this.distribuirPecas();
-				//this.habilitar(true);
+			}
 
 				this.portaAvioes.addEventListener(EventosBatalhaNaval.SOLTAREMBARCACAO, this.soltarEmbarcacao);
 				this.destroyer.addEventListener(EventosBatalhaNaval.SOLTAREMBARCACAO, this.soltarEmbarcacao);
 				this.submarino.addEventListener(EventosBatalhaNaval.SOLTAREMBARCACAO, this.soltarEmbarcacao);
-			//}
-			
-			/*this.submarino.addEventListener(MouseEvent.MOUSE_DOWN, arrastarEmbarcacao);
-			this.submarino.addEventListener(MouseEvent.MOUSE_UP, soltarEmbarcacao);*/
-			
-			
 		}
-		
-		/*//Nem esse método, nem os 4 próximos serão usados aqui posteriormente. Eles estão aqui por enquanto que a frota ainda não está sendo distribuida através de arrasto.
-		private function distribuirPecas():void {
-			this.tabuleiro.inicializarFrota();
-			this.distribuirDestroyer();
-			this.distribuirPortaAvioes();
-			this.distribuirSubmarino();
-			
-			this.mostrarMatrizTabuleiro();			
-		}*/
 		
 		private function posicaoLegal(linha:int, coluna:int, embarcacao:String, orientacao:int = undefined):Boolean {
 			var retorno:Boolean = true;
@@ -299,132 +277,6 @@
 			return retorno;
 		}	
 		
-		/*private function distribuirSubmarino():void {
-			var linha:int = Math.floor(Math.random()*this._matrizTabuleiro.length);
-			var coluna:int = Math.floor(Math.random() * this._matrizTabuleiro[0].length);
-			if ( this.posicaoLegal(linha, coluna, "S") ) {
-				this._matrizTabuleiro[linha][coluna] = "P";
-				
-				this.tabuleiro.frota[2].adicionarPeca(this.tabuleiro.pecas[linha][coluna]);
-			}
-			else {
-				trace("Submarino nao pode ficar na posicao: " + linha + ", " + coluna);
-				this.distribuirSubmarino();
-			}
-		}
-		
-		private function distribuirPortaAvioes():void {
-			var orientacao:int = Math.floor(Math.random() * 2); // 0 horizontal, 1 vertical.
-			var linha:int;
-			var coluna:int;
-			if (orientacao == 0) { // horizontal
-				linha = Math.floor(Math.random() * this._matrizTabuleiro.length);
-				coluna = Math.floor( Math.random() * (this._matrizTabuleiro[0].length - 3) );
-				if ( this.posicaoLegal(linha, coluna, "P", 0) ) {
-					this._matrizTabuleiro[linha][coluna] = "P";
-					this._matrizTabuleiro[linha][coluna + 1] = "P";
-					this._matrizTabuleiro[linha][coluna + 2] = "P";
-					this._matrizTabuleiro[linha][coluna + 3] = "P";	
-					
-					this.tabuleiro.frota[1].adicionarPeca(this.tabuleiro.pecas[linha][coluna]);
-					this.tabuleiro.frota[1].adicionarPeca(this.tabuleiro.pecas[linha][coluna + 1]);
-					this.tabuleiro.frota[1].adicionarPeca(this.tabuleiro.pecas[linha][coluna + 2]);
-					this.tabuleiro.frota[1].adicionarPeca(this.tabuleiro.pecas[linha][coluna + 3]);
-				}
-				else {
-					this.distribuirPortaAvioes();
-				}
-			}
-			else { // vertical
-				linha = Math.floor( Math.random() * (this._matrizTabuleiro.length - 3) );
-				coluna = Math.floor( Math.random() * this._matrizTabuleiro[0].length );
-				if ( this.posicaoLegal(linha, coluna, "P", 1) ) {
-					this._matrizTabuleiro[linha][coluna] = "P";
-					this._matrizTabuleiro[linha + 1][coluna] = "P";
-					this._matrizTabuleiro[linha + 2][coluna] = "P";
-					this._matrizTabuleiro[linha + 3][coluna] = "P";			
-					
-					this.tabuleiro.frota[1].adicionarPeca(this.tabuleiro.pecas[linha][coluna]);
-					this.tabuleiro.frota[1].adicionarPeca(this.tabuleiro.pecas[linha + 1][coluna]);
-					this.tabuleiro.frota[1].adicionarPeca(this.tabuleiro.pecas[linha + 2][coluna]);
-					this.tabuleiro.frota[1].adicionarPeca(this.tabuleiro.pecas[linha + 3][coluna]);
-				}
-				else {
-					this.distribuirPortaAvioes();
-				}
-			}						
-		}
-		
-		private function distribuirDestroyer():void {
-			var orientacao:int = 0//Math.floor(Math.random() * 4);
-			var linha:int;
-			var coluna:int;
-			if (orientacao == 0) {				
-				linha = Math.floor(Math.random() * (this._matrizTabuleiro.length - 2) );
-				coluna = Math.floor( Math.random() * (this._matrizTabuleiro[0].length - 1) );				
-				if ( this.posicaoLegal(linha, coluna, "D", 0) ) {					
-					this._matrizTabuleiro[linha][coluna] = "P";
-					this._matrizTabuleiro[linha + 1][coluna + 1] = "P";
-					this._matrizTabuleiro[linha + 2][coluna] = "P";		
-					
-					this.tabuleiro.frota[0].adicionarPeca(this.tabuleiro.pecas[linha][coluna]);
-					this.tabuleiro.frota[0].adicionarPeca(this.tabuleiro.pecas[linha + 1][coluna + 1]);
-					this.tabuleiro.frota[0].adicionarPeca(this.tabuleiro.pecas[linha + 2][coluna]);					
-				}
-				else {
-					this.distribuirDestroyer();
-				}
-			}
-			else if(orientacao == 1){
-				linha = Math.floor(Math.random() * (this._matrizTabuleiro.length - 1) );
-				coluna = Math.floor( Math.random() * (this._matrizTabuleiro[0].length - 2) );
-				if ( this.posicaoLegal(linha, coluna, "D", 1) ) {
-					this._matrizTabuleiro[linha][coluna] = "P";
-					this._matrizTabuleiro[linha][coluna + 2] = "P";
-					this._matrizTabuleiro[linha + 1][coluna + 1] = "P";		
-					
-					this.tabuleiro.frota[0].adicionarPeca(this.tabuleiro.pecas[linha][coluna]);
-					this.tabuleiro.frota[0].adicionarPeca(this.tabuleiro.pecas[linha][coluna + 2]);
-					this.tabuleiro.frota[0].adicionarPeca(this.tabuleiro.pecas[linha + 1][coluna + 1]);
-				}
-				else {
-					this.distribuirDestroyer();
-				}
-			}
-			else if(orientacao == 2){
-				linha = Math.floor(Math.random() * (this._matrizTabuleiro.length - 1) );
-				coluna = Math.floor( Math.random() * (this._matrizTabuleiro[0].length - 1) );
-				if ( this.posicaoLegal(linha, coluna, "D", 2) ) {
-					this._matrizTabuleiro[linha][coluna] = "P";
-					this._matrizTabuleiro[linha - 1][coluna + 1] = "P";
-					this._matrizTabuleiro[linha + 1][coluna + 1] = "P";	
-					
-					this.tabuleiro.frota[0].adicionarPeca(this.tabuleiro.pecas[linha][coluna]);
-					this.tabuleiro.frota[0].adicionarPeca(this.tabuleiro.pecas[linha - 1][coluna + 1]);
-					this.tabuleiro.frota[0].adicionarPeca(this.tabuleiro.pecas[linha + 1][coluna + 1]);
-				}
-				else {
-					this.distribuirDestroyer();
-				}
-			}
-			else{
-				linha = Math.floor(Math.random() * (this._matrizTabuleiro.length - 2) ) + 1;
-				coluna = Math.floor( Math.random() * (this._matrizTabuleiro[0].length - 2) );
-				if ( this.posicaoLegal(linha, coluna, "D", 3) ) {
-					this._matrizTabuleiro[linha][coluna] = "P";
-					this._matrizTabuleiro[linha - 1][coluna + 1] = "P";
-					this._matrizTabuleiro[linha][coluna + 2] = "P";	
-					
-					this.tabuleiro.frota[0].adicionarPeca(this.tabuleiro.pecas[linha][coluna]);
-					this.tabuleiro.frota[0].adicionarPeca(this.tabuleiro.pecas[linha - 1][coluna + 1]);
-					this.tabuleiro.frota[0].adicionarPeca(this.tabuleiro.pecas[linha][coluna + 2]);
-				}
-				else {
-					this.distribuirDestroyer();
-				}
-			}						
-		}*/
-		
 		private function soltarEmbarcacao(e:EventosBatalhaNaval):void {
 			var movie:MovieClip = MovieClip(e.currentTarget);
 			var posicoes:Array = this.localizarPosicoes(movie);
@@ -454,23 +306,7 @@
 						this.posicionarSubmarino(movie, posicoes, tipo, orientacao);
 						break;
 				}
-				
- 				//var embarcacao:Embarcacao = new Embarcacao();
-				/*switch(movie.NOME) {
-					case "portaAviao":
-						//CONTINUAR COM LORENA DAQUI
-					break;
-				}
-				for (var i:int = 0; i < posicoes.length; i++) {
-					var peca:Peca = this.tabuleiro.pecas[posicoes[i][0]][posicoes[i][1]];
-					embarcacao.adicionarPeca(peca);
-				}
-				this.frota.push(embarcacao);*/
 			}
-			
-			
-			
-			
 		}
 		
 		private function posicionarSubmarino(movie:MovieClip,posicoes:Array,tipo:String,orientacao:int):void{
@@ -695,9 +531,6 @@
 					
 				}
 			}
-			/*trace("this.tabuleiro[quad+retorno[0][0]retorno[0][1]+_mc] = "+this.tabuleiro["quad"+retorno[0][0]+""+retorno[0][1]+"_mc"].name)
-			embarcacao.figura.x = this.tabuleiro.x+this.tabuleiro["quad"+retorno[0][0]+""+retorno[0][1]+"_mc"].x
-			embarcacao.figura.y = this.tabuleiro.y+this.tabuleiro["quad"+retorno[0][0]+""+retorno[0][1]+"_mc"].y*/
 			return retorno;
 		}
 		
@@ -716,11 +549,6 @@
 			return retorno;
 		}
 		
-		/*private function arrastarEmbarcacao(e:MouseEvent):void {
-			this.submarino.startDrag();
-			
-		}*/
-		
 		public function liberar():void {
 			this.log_txt.htmlText += "Posicione sua frota nos locais desejados e clique em \"Iniciar jogo\".\n";						
 			this.log_txt.htmlText += "Se você quiser reposicionar alguma embarcação, basta arrastá-la novamente que a primeira será apagada.\n";
@@ -737,23 +565,5 @@
 		public function set tabuleiro(value:MovieClip):void {
 			_tabuleiro = value;
 		}
-		
-		/*private function terminarArrasto(e:Event):void {
-			var embarcacao:PortaAvioes = PortaAvioes(e.currentTarget);
-			this.estaDentroTabuleiro(embarcacao);
-		}*/
-		
-		/*private function estaDentroTabuleiro(embarcacao:PortaAvioes):Boolean {				
-			if (embarcacao.figura.x > this.tabuleiro.x - embarcacao.x - embarcacao.parent.x + embarcacao.figura.width / 2) {
-				trace("está à direita do x mínimo");
-			}
-			else {
-				trace("está à esquerda do x mínimo");
-			}
-			
-			return true;
-		}*/
-		
 	}
-	
 }

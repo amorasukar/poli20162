@@ -6,16 +6,14 @@
 	import flash.events.MouseEvent;
 	
 	/**
-	* ...
-	* @author Lorena Tablada
+	* @author Amora
 	*/
 	public class Inteligencia extends MovieClip{
 		
 		private var tabuleiro:Tabuleiro; //Tabuleiro da inteligencia
 		private var matrizOponente:Array; // Essa eh a matriz que representa o que a inteligencia conhece da matriz de seu oponente (o humano).
-		private var minhaMatriz:Array; //Matriz do usu?rio que est? jogando contra o computador	
+		private var minhaMatriz:Array; // Matriz do usu?rio que est? jogando contra o computador	
 		
-		//private var jogar:Button;
 		private var ultimaLinhaEscolhida:int;
 		private var ultimaColunaEscolhida:int;
 		
@@ -25,21 +23,9 @@
 			this.tabuleiro =  tabuleiro;	
 			this.tiposEmbarcacao = ["portaAvioes", "destroyer"];
 			
-			//this.jogar = jogar_btn;
-			//this.jogar.addEventListener(MouseEvent.MOUSE_UP, this.escolherJogada);
-			//O computador n?o vai clicar em peca nenhuma.
-			//this.tabuleiro.addEventListener(EventosBatalhaNaval.CLICARPECA, clicar);
-			
 			this.inicializarMatrizes();			
 			this.distribuirEmbarcacoes();
 		}				
-				
-		
-		//O computador n?o vai clicar em peca nenhuma.
-		/*private function clicar(e:Event):void {
-			var pecaClicada:Peca = Peca(e.target);
-			trace("pecaClicada.name = " + pecaClicada.name);
-		}*/
 		
 		private function inicializarMatrizes():void {
 			this.matrizOponente = new Array(10);
@@ -66,8 +52,6 @@
 			}
 		}
 		
-		//Esse m?todo ser? usado para o computador distribuir as pe?as dele, mas, por enquanto, ? como se fosse a distribui??o do usu?rio que est? jogando
-		//contra o computador
 		private function distribuirEmbarcacoes():void {			
 			this.distribuirDestroyer();
 			this.distribuirPortaAvioes();
@@ -184,13 +168,9 @@
 			var coluna:int = Math.floor(Math.random() * this.minhaMatriz[0].length);			
 			if ( this.posicaoLegal(linha, coluna, "S") ) {
 				this.minhaMatriz[linha][coluna] = "P";
-				
 				this.tabuleiro.frota[2].adicionarPeca(this.tabuleiro.pecas[linha][coluna]);
-				
-				//this.tabuleiro.pecas[linha][coluna].estado = EstadoPeca.PECAEXPOSTA;
 			}
 			else {
-				//trace("Submarino nao pode ficar na posicao: " + linha + ", " + coluna);
 				this.distribuirSubmarino();
 			}
 		}
@@ -212,11 +192,6 @@
 					this.tabuleiro.frota[1].adicionarPeca(this.tabuleiro.pecas[linha][coluna + 1]);
 					this.tabuleiro.frota[1].adicionarPeca(this.tabuleiro.pecas[linha][coluna + 2]);
 					this.tabuleiro.frota[1].adicionarPeca(this.tabuleiro.pecas[linha][coluna + 3]);
-					
-					/*this.tabuleiro.pecas[linha][coluna].estado = EstadoPeca.PECAEXPOSTA;
-					this.tabuleiro.pecas[linha][coluna+1].estado = EstadoPeca.PECAEXPOSTA;
-					this.tabuleiro.pecas[linha][coluna+2].estado = EstadoPeca.PECAEXPOSTA;
-					this.tabuleiro.pecas[linha][coluna+3].estado = EstadoPeca.PECAEXPOSTA;*/
 				}
 				else {
 					this.distribuirPortaAvioes();
@@ -235,11 +210,6 @@
 					this.tabuleiro.frota[1].adicionarPeca(this.tabuleiro.pecas[linha + 1][coluna]);
 					this.tabuleiro.frota[1].adicionarPeca(this.tabuleiro.pecas[linha + 2][coluna]);
 					this.tabuleiro.frota[1].adicionarPeca(this.tabuleiro.pecas[linha + 3][coluna]);
-					
-					/*this.tabuleiro.pecas[linha][coluna].estado = EstadoPeca.PECAEXPOSTA;
-					this.tabuleiro.pecas[linha+1][coluna].estado = EstadoPeca.PECAEXPOSTA;
-					this.tabuleiro.pecas[linha+2][coluna].estado = EstadoPeca.PECAEXPOSTA;
-					this.tabuleiro.pecas[linha+3][coluna].estado = EstadoPeca.PECAEXPOSTA;*/
 				}
 				else {
 					this.distribuirPortaAvioes();
@@ -266,10 +236,6 @@
 					this.tabuleiro.frota[0].adicionarPeca(this.tabuleiro.pecas[linha][coluna]);
 					this.tabuleiro.frota[0].adicionarPeca(this.tabuleiro.pecas[linha + 1][coluna + 1]);
 					this.tabuleiro.frota[0].adicionarPeca(this.tabuleiro.pecas[linha + 2][coluna]);
-					
-					/*this.tabuleiro.pecas[linha][coluna].estado = EstadoPeca.PECAEXPOSTA;
-					this.tabuleiro.pecas[linha+1][coluna+1].estado = EstadoPeca.PECAEXPOSTA;
-					this.tabuleiro.pecas[linha+2][coluna].estado = EstadoPeca.PECAEXPOSTA;*/
 				}
 				else {
 					this.distribuirDestroyer();
@@ -289,10 +255,6 @@
 					this.tabuleiro.frota[0].adicionarPeca(this.tabuleiro.pecas[linha][coluna]);
 					this.tabuleiro.frota[0].adicionarPeca(this.tabuleiro.pecas[linha][coluna + 2]);
 					this.tabuleiro.frota[0].adicionarPeca(this.tabuleiro.pecas[linha + 1][coluna + 1]);
-					
-					/*this.tabuleiro.pecas[linha][coluna].estado = EstadoPeca.PECAEXPOSTA;
-					this.tabuleiro.pecas[linha][coluna+2].estado = EstadoPeca.PECAEXPOSTA;
-					this.tabuleiro.pecas[linha+1][coluna+1].estado = EstadoPeca.PECAEXPOSTA;*/
 				}
 				else {
 					this.distribuirDestroyer();
@@ -312,10 +274,6 @@
 					this.tabuleiro.frota[0].adicionarPeca(this.tabuleiro.pecas[linha][coluna]);
 					this.tabuleiro.frota[0].adicionarPeca(this.tabuleiro.pecas[linha - 1][coluna + 1]);
 					this.tabuleiro.frota[0].adicionarPeca(this.tabuleiro.pecas[linha + 1][coluna + 1]);
-					
-					/*this.tabuleiro.pecas[linha][coluna].estado = EstadoPeca.PECAEXPOSTA;
-					this.tabuleiro.pecas[linha-1][coluna+1].estado = EstadoPeca.PECAEXPOSTA;
-					this.tabuleiro.pecas[linha+1][coluna+1].estado = EstadoPeca.PECAEXPOSTA;*/
 				}
 				else {
 					this.distribuirDestroyer();
@@ -335,10 +293,6 @@
 					this.tabuleiro.frota[0].adicionarPeca(this.tabuleiro.pecas[linha][coluna]);
 					this.tabuleiro.frota[0].adicionarPeca(this.tabuleiro.pecas[linha - 1][coluna + 1]);
 					this.tabuleiro.frota[0].adicionarPeca(this.tabuleiro.pecas[linha][coluna + 2]);
-					
-					/*this.tabuleiro.pecas[linha][coluna].estado = EstadoPeca.PECAEXPOSTA;
-					this.tabuleiro.pecas[linha-1][coluna+1].estado = EstadoPeca.PECAEXPOSTA;
-					this.tabuleiro.pecas[linha][coluna+2].estado = EstadoPeca.PECAEXPOSTA;*/
 				}
 				else {
 					this.distribuirDestroyer();

@@ -3,8 +3,7 @@
 	import flash.events.Event;
 	
 	/**
-	* ...
-	* @author Lorena Tablada
+	* @author Jessica
 	*/
 	public class Tabuleiro extends MovieClip {
 		private var _pecas:Array;
@@ -88,8 +87,6 @@
 				for (var j:int = 0; j < this.pecas[i].length; j++) {
 					this._pecas[i][j] = this.getChildByName("quad" + i + j + "_mc");
 					this._pecas[i][j].buttonMode = true;
-					//this._pecas[i][j].addEventListener(EventosBatalhaNaval.CLICARPECA, clicar);
-					//this._pecas[i][j].addEventListener(EventosBatalhaNaval.ACERTARAGUA, dispararAcertarAgua);
 					this._pecas[i][j].observadores = new Array(this);
 				}					
 			}
@@ -178,7 +175,6 @@
 		public function set terminou(value:Boolean):void {
 			_terminou = value;
 		}
-				
 	}
 	
 }

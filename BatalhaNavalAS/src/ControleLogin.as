@@ -8,8 +8,7 @@
 	import flash.events.DataEvent;
 	
 	/**
-	* ...
-	* @author Lorena Tablada
+	* @author Jessica
 	*/
 	public class ControleLogin extends MovieClip {
 		
@@ -41,13 +40,11 @@
 			this.nomeCampo.addEventListener(Event.CHANGE, this.modificar);						
 			this.senhaCampo.addEventListener(Event.CHANGE, this.modificar);	
 			this.ipCampo.addEventListener(Event.CHANGE, this.modificar);
-			//this.humano_rb.addEventListener(Event.CHANGE, this.modificar);			
-			//this.computador_rb.addEventListener(Event.CHANGE, this.modificar);
 			this.ok_btn.addEventListener(MouseEvent.MOUSE_UP, this.logar);
 		}	
 		
 		private function modificar(e:Event):void {			
-			if ( (this.nomeCampo.text != "") && (this.senhaCampo.text != "")  && (this.ipCampo.text != "")/*&& (this.humano_rb.selected || this.computador_rb.selected)*/ ) {
+			if ( (this.nomeCampo.text != "") && (this.senhaCampo.text != "")  && (this.ipCampo.text != "")) {
 				this.ok_btn.enabled = true;
 			}
 			else {
@@ -56,34 +53,24 @@
 		}
 				
 		private function logar(e:Event):void {
-			//this.ok_btn.removeEventListener(MouseEvent.MOUSE_UP, this.logar);
 			this.ok_btn.enabled = false;
 			
 			this.nome = this.nomeCampo.text;
 			this.senha = this.senhaCampo.text;
-			//if (this.humano_rb.selected) {
-				this.log_txt.htmlText += "Conectando ao servidor...";
-				//this.comunicacao.addEventListener(Event.CONNECT, confirmarConexao);
-				//this.comunicacao.connect("localhost", 8090);
-				this.comunicacao.connect(this.ipCampo.text, 8090);
-				this.enviarNome();				
-			/*}
-			else {
-				this.dispatchEvent(new Event(EventosBatalhaNaval.LOGINPASSARTELA));
-			}*/
+			this.log_txt.htmlText += "Conectando ao servidor...";
+			this.comunicacao.connect(this.ipCampo.text, 8090);
+			this.enviarNome();
 		}				
 		
 		public function enviarNome():void {
 			var mensagem:Mensagem = new Mensagem();
 			mensagem.tipo = "envioNome";
-			//mensagem.idCliente = this.idCliente;
 			mensagem.texto = this.nome_txt.text;
 			mensagem.senha = this.senha;
 			this.comunicacao.send(mensagem.criarXML());
 		}
 		
 		private function confirmarConexao(e:Event):void {
-			//var xml:XML = XML(e.data);
 			this.log_txt.htmlText += "Conexão realizada com sucesso.";
 			this.dispatchEvent(this.conexaoAceita_evt);
 		}
@@ -111,8 +98,6 @@
 		public function set senha(value:String):void {
 			_senha = value;
 		}
-		
-		
 	}
 	
 }

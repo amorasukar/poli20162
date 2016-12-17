@@ -4,8 +4,7 @@ package {
 	import flash.events.MouseEvent;
 	
 	/**
-	 * ...
-	 * @author Saulo e Lorena
+	 * @author Amora
 	 */
 	public class ControleIntroducao extends MovieClip {
 		

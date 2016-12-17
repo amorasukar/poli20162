@@ -5,14 +5,12 @@
 	import flash.events.Event;
 	
 	/**
-	* ...
-	* @author Lorena Tablada
+	* @author Amora
 	*/
 	public class PortaAvioesFigura extends MovieClip {				
 		public var figura:MovieClip;
 		private var mais90:Button;
 		private var menos90:Button;
-		//private var terminarArrasto_evt:Event;
 		public var pecas:Array;
 		private var xIni:Number;
 		private var yIni:Number;
@@ -25,20 +23,14 @@
 			this.figura.visible = true;
 			this.mais90 = this.mais90_mc;
 			this.menos90 = this.menos90_mc;
-			//this.quantidadePartes = 4;
 			this.pecas = [this.figura.peca1_mc, this.figura.peca2_mc, this.figura.peca3_mc, this.figura.peca4_mc];
 			this.xIni = this.figura.x;
 			this.yIni = this.figura.y;
-			//this.terminarArrasto_evt = new Event(EventosBatalhaNaval.SOLTAREMBARCACAO);
 			
 			this.figura.addEventListener(MouseEvent.MOUSE_DOWN, this.iniciarArrasto);
 			this.figura.addEventListener(MouseEvent.MOUSE_UP, this.terminarArrasto);
-			
 			this.addEventListener(MouseEvent.ROLL_OVER, this.aparecer);
 			this.addEventListener(MouseEvent.ROLL_OUT, this.desaparecer);
-			
-			//this.addEventListener(EventosBatalhaNaval.FORATABULEIRO, voltarPosicaoInicial);
-			
 			this.mais90.addEventListener(MouseEvent.MOUSE_UP, this.rotacionar);
 			this.menos90.addEventListener(MouseEvent.MOUSE_UP, this.rotacionar);
 			this.orientacao = 0;
@@ -59,7 +51,6 @@
 		private function terminarArrasto(m:Event):void {
 			this.figura.stopDrag();
 			this.dispatchEvent(new EventosBatalhaNaval(EventosBatalhaNaval.SOLTAREMBARCACAO));
-			//this.dispatchEvent(new Event(EventosBatalhaNaval.SOLTAREMBARCACAO));
 		}
 		
 		public function configurar():void {
@@ -113,7 +104,5 @@
 		public function set NOME(value:String):void {
 			_NOME = value;
 		}
-		
 	}
-	
 }

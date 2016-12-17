@@ -4,8 +4,7 @@
 	import flash.events.MouseEvent;
 	
 	/**
-	* ...
-	* @author Lorena Tablada
+	* @author Jessica
 	*/
 	public class Peca extends MovieClip {
 		private var _linha:int;
@@ -19,9 +18,6 @@
 			this._coluna = int(this.name.substr(5, 1));
 			this.estado = EstadoPeca.PECAOCULTA;
 			this.observadores = new Array();
-			//É isso o que eu faço com o estado???
-			//Se for ficar assim, tem que mudar o diagrama de classes pq lá diz que Peca tem um EstadoPeca.
-			
 			this.addEventListener(MouseEvent.MOUSE_UP, this.clicar);
 		}
 				
@@ -36,13 +32,7 @@
 		
 		public function set estado(value:String):void {				
 			_estado = value;
-			this.gotoAndStop(this.estado);/*
-			if (this.estado == EstadoPeca.PECAATINGIDA) {
-				this.dispatchEvent( new EventosBatalhaNaval(EventosBatalhaNaval.ATINGIRPECA) );
-			}
-			else if (this.estado == EstadoPeca.PECAAGUA) {
-				this.dispatchEvent( new EventosBatalhaNaval(EventosBatalhaNaval.ACERTARAGUA) );
-			}*/
+			this.gotoAndStop(this.estado);
 		}
 		
 		private function notificar():void {

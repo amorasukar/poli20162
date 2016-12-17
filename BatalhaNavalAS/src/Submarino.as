@@ -1,8 +1,7 @@
 ﻿package {
 	
 	/**
-	* ...
-	* @author Lorena Tablada
+	* @author Amora
 	*/
 	public class Submarino extends Embarcacao {
 		

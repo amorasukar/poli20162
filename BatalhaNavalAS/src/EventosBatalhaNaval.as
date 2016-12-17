@@ -3,8 +3,7 @@ package {
 	import flash.events.Event;
 	
 	/**
-	 * ...
-	 * @author Saulo e Lorena
+	 * @author Jessica
 	 */
 	public class EventosBatalhaNaval extends Event {
 		
@@ -61,7 +60,5 @@ package {
 		public override function toString():String { 
 			return formatToString("EventosBatalhaNaval", "type", "bubbles", "cancelable", "eventPhase"); 
 		}
-		
 	}
-	
 }

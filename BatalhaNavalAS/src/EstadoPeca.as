@@ -1,11 +1,9 @@
 ﻿package {	
 	
 	/**
-	* ...
-	* @author Lorena Tablada
+	* @author Amora
 	*/
-	public class EstadoPeca{
-		
+	public class EstadoPeca {	
 		public static const PECAOCULTA: String = "pecaOculta";
 		public static const PECAAGUA: String = "pecaAgua";
 		public static const PECAATINGIDA: String = "pecaAtingida";

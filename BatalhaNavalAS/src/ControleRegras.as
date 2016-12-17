@@ -4,8 +4,7 @@
 	import flash.events.Event;
 	
 	/**
-	* ...
-	* @author Lorena Tablada
+	* @author Jessica
 	*/
 	public class ControleRegras extends MovieClip {
 		private var clicar_evt:Event;

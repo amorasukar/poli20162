@@ -5,8 +5,7 @@ package {
 	import flash.events.MouseEvent;	
 	
 	/**
-	 * ...
-	 * @author Saulo e Lorena
+	 * @author Jessica
 	 */
 	public class CaixaConviteEnviado extends MovieClip {
 		

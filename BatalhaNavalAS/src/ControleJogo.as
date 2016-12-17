@@ -9,8 +9,7 @@
 	import flash.events.TimerEvent;
 	
 	/**
-	 * ...
-	 * @author Saulo, Lorena e Havana
+	 * @author Amora
 	 */
 	public class ControleJogo extends MovieClip {
 		/*Elementos do palco*/
@@ -208,11 +207,9 @@
 			if (this.vez == 0) {				
 				trace("liberou meu clique");
 				this.oponenteTabuleiro.liberarClique(true);
-				//this.meuTabuleiro.liberarClique(false);
 			}			
 			else {				
 				this.oponenteTabuleiro.liberarClique(false);
-				//this.meuTabuleiro.liberarClique(true);
 				if (this.jogadores[this.vez].nome == "Computador") {
 					this.revalorarDelay();
 					this.delay.start();
@@ -232,10 +229,7 @@
 			if (this.vez == 1 && this.oponente.nome == "Computador") {
 				Computador(this.oponente).acertarAgua();				
 			}
-			/*if (this.vez == 1 && this.oponente.nome != "Computador" && !this.jogadaEnviada) {
-				this.retornarJogada(EstadoPeca.PECAAGUA);
-				
-			}*/
+
 			
 			this.escreverLog("e não atingiu nenhuma peça de nenhuma embarcação de " + this.jogadores[(1 - this.vez)].nome + ".");
 			this.passarVez();
@@ -246,9 +240,6 @@
 			if (this.vez == 1 && this.oponente.nome == "Computador") {
 				Computador(this.oponente).atingirPeca();
 			}
-			/*if (this.vez == 1 && this.oponente.nome != "Computador") {
-				this.retornarJogada(EstadoPeca.PECAATINGIDA);
-			}*/
 			this.escreverLog("e atingiu uma peça de uma embarcação de " + this.jogadores[(1-this.vez)].nome + ".");
 			this.continuarVez();
 		}
@@ -258,9 +249,6 @@
 			if (this.vez == 1 && this.oponente.nome == "Computador") {				
 				Computador(this.oponente).abaterEmbarcacao(this.meuTabuleiro.ultimaEmbarcacaoAbatida);				
 			}
-			/*if (this.vez == 1 && this.oponente.nome != "Computador") {
-				this.retornarJogada(EstadoPeca.PECAABATIDA);
-			}*/
 			this.escreverLog(" e abateu um " + this.tabuleiros[(1 - this.vez)].ultimaEmbarcacaoAbatida.nome + " de " + this.jogadores[(1 - this.vez)].nome + ".");			
 			if(!this.tabuleiros[(1 - this.vez)].terminou) {
 				this.continuarVez();
@@ -307,18 +295,6 @@
 		public function executarJogadaOponente(linha:int, coluna:int):void {
 			this.meuTabuleiro.pecas[linha][coluna].clicar();
 		}
-		
-		/*public function receberResultadoJogada(tipo:String):void {
-			this.oponenteTabuleiro.ultimaPecaClicada.estado = tipo;
-		}
-		
-		private function retornarJogada(tipo:String):void {
-			var msg:Mensagem = new Mensagem();
-			msg.tipo = "resultadoJogada";
-			msg.texto = tipo;
-			this.comunicacao.send(msg.criarXML());
-		}*/
-				
 	}
 	
 }

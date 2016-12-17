@@ -1,8 +1,7 @@
 ﻿package {
 	
 	/**
-	* ...
-	* @author Lorena Tablada
+	* @author Jessica
 	*/
 	public class Jogada {
 		private var _linha:int;
