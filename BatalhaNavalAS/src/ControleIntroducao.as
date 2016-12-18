@@ -8,7 +8,6 @@ package {
 	 */
 	public class ControleIntroducao extends MovieClip {
 		
-		
 		public function ControleIntroducao() {
 			this.logar_btn.addEventListener(MouseEvent.MOUSE_UP, this.logar);
 		}

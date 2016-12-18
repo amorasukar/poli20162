@@ -8,7 +8,6 @@
 	import flash.net.XMLSocket;
 	
 	/**
-	* ...
 	* @author Jessica
 	*/
 	public class ControleDistribuindoFrota extends MovieClip{

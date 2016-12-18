@@ -10,5 +10,4 @@
 		public static const PECAABATIDA: String = "pecaAbatida";						
 		public static const PECAEXPOSTA: String = "pecaExposta";
 	}
-	
 }

@@ -35,8 +35,5 @@ package {
 			this.dispatchEvent(new EventosBatalhaNaval(EventosBatalhaNaval.CAIXACONFIRMACAOSIM))
 			
 		}
-		
-		
 	}
-	
 }

@@ -10,5 +10,4 @@
 		public static const EMBARCACAOABATIDA: String = "embarcacaoAbatida";		
 		
 	}
-	
 }

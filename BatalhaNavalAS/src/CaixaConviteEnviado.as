@@ -17,7 +17,7 @@ package {
 		public function CaixaConviteEnviado(nome:String) {
 			this.nome = nome;
 			this.texto = "Você convidou " + this.nome + " para jogar.";
-			this.texto += "\nAguardando resposta...";
+			this.texto += "\nAguarde a resposta...";
 			this.campo = this.campo_txt;
 			this.campo.text = this.texto;
 			this.botao = this.botao_btn;
