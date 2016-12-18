@@ -35,23 +35,22 @@
 		
 		public function ControleConvidandoOponente(socket:XMLSocket, id:int) {
 			this.jogadores = this.jogadores_dg;
-			this.destinatarios = this.destinatarios_cb;
+			// this.destinatarios = this.destinatarios_cb;
 			this.alvo = this.alvo_mc;
 			this.idCliente = id;
 			this.idConvidado = -1;			
 			this.configurarFataGrid();
 			this.comunicacao = socket;
-			this.fala = this.fala_txt;
-			this.enviar = this.enviar_btn;
+			//this.fala = this.fala_txt;
+			// this.enviar = this.enviar_btn;
 			this.convidar = this.convidar_btn;
-			this.jogarPc = this.pc_btn;
+			// this.jogarPc = this.pc_btn;
 			this.pedirJogadores();	
 			
-			this.fala.addEventListener(Event.CHANGE, this.habilitarEnviar);
-			this.enviar.addEventListener(MouseEvent.MOUSE_UP, this.enviarTexto);
+			//this.fala.addEventListener(Event.CHANGE, this.habilitarEnviar);
+			// this.enviar.addEventListener(MouseEvent.MOUSE_UP, this.enviarTexto);
 			this.jogadores.addEventListener(Event.CHANGE, this.habilitarConvidar);
 			this.convidar.addEventListener(MouseEvent.MOUSE_UP, this.convidarOponente);
-			this.jogarPc.addEventListener(MouseEvent.MOUSE_UP, this.jogarContraPC);
 		}
 		
 		private function jogarContraPC(e:MouseEvent):void {
@@ -105,7 +104,7 @@
 					}
 				}
 				//-------------------------------------------//
-				if (novoEstado == "Jogando") {
+				/* if (novoEstado == "Jogando") {
 					
 					for (var j:int = 0; j < this.destinatarios.length; j++) {
 						if ( (this.destinatarios.getItemAt(j).data == item.Id) ) {
@@ -117,7 +116,7 @@
 				}
 				else {
 					this.destinatarios.addItem(item);
-				}
+				} */
 				
 			}
 		}
@@ -128,22 +127,20 @@
 					this.convidar.enabled =
 					this.convidar.mouseEnabled = true;
 				}
-				if (this.fala.text != "") {
+				/*if (this.fala.text != "") {
 					this.enviar.enabled =
 					this.enviar.mouseEnabled = true;
-				}
+				}*/
 			}
 			else {
 				this.convidar.enabled = 
-				this.convidar.mouseEnabled =
-				this.enviar.enabled =
-				this.enviar.mouseEnabled = false;
+				this.convidar.mouseEnabled = false;
+				//this.enviar.enabled =
+				//this.enviar.mouseEnabled = false;
 			}
-			this.jogarPc.enabled = 
-			this.jogarPc.mouseEnabled = 
-			this.fala.editable =
-			this.jogadores.selectable =
-			this.destinatarios.enabled = estadoFinal;
+			//this.fala.editable =
+			this.jogadores.selectable = estadoFinal;
+			//this.destinatarios.enabled = estadoFinal;
 		}
 		
 		private function habilitarConvidar(e:Event):void {
@@ -159,28 +156,28 @@
 		
 		private function enviarTexto(e:MouseEvent):void{
 			var msg:Mensagem = new Mensagem();			
-			msg.texto = this.fala.text;
+			//msg.texto = this.fala.text;
 			
-			if ( this.destinatarios.selectedIndex == 0 ) {
+			/* if ( this.destinatarios.selectedIndex == 0 ) {
 				msg.tipo = "conversaPublica";
 			}
-			else {
+			else { */
 				msg.tipo = "conversaPrivada";
 				msg.idDestinatario = this.destinatarios.selectedItem.data;
-			}			
+			// }			
 			
 			this.comunicacao.send( msg.criarXML() );
-			this.fala.text = "";
-			this.enviar.enabled = false;
+			//this.fala.text = "";
+			//this.enviar.enabled = false;
 		}
 		
 		private function habilitarEnviar(e:Event):void{
-			if (this.fala.text != "") {
+			/*if (this.fala.text != "") {
 				this.enviar.enabled = true;
 			}
-			else {
-				this.enviar.enabled = false;
-			}
+			else {*/
+				//this.enviar.enabled = false;
+			//}
 		}
 		
 		private function pedirJogadores():void {
@@ -203,9 +200,10 @@
 				if ( (novoJogador) || (int(id) == this.idCliente) ) {
 					this.log_txt.text += "-> " + nome + " entrou na sala.\n";
 				}
+				/*
 				if ( (int(id) != this.idCliente) && (estado == "Livre") ) {
 					this.destinatarios.addItem(itemCB);
-				}
+				}*/
 			}
 		}
 		
@@ -223,12 +221,12 @@
 		
 		private function removerDestinatario(id:String, nome:String):void {
 			var itemCB:Object = { label: nome, data: id };
-			for (var i:int = 0; i < this.destinatarios.length; i++) {
+			/* for (var i:int = 0; i < this.destinatarios.length; i++) {
 				if (this.destinatarios.getItemAt(i).data == id) {
 					this.destinatarios.removeItem( this.destinatarios.getItemAt(i) );
 					break;
 				}
-			}
+			} */
 		}
 		
 		private function verificarExistencia(item:Object):Boolean {
@@ -265,13 +263,13 @@
 		
 		private function buscarNome(id:String):String {
 			var retorno:String = "";
-			for (var i:int = 0; i < this.destinatarios.length; i++) {
+			/* for (var i:int = 0; i < this.destinatarios.length; i++) {
 				trace(this.destinatarios.getItemAt(i).data + " == " + id);
 				if (this.destinatarios.getItemAt(i).data == id) {
 					retorno = this.destinatarios.getItemAt(i).label;
 					break;
 				}
-			}
+			} */
 			return retorno;
 		}
 		

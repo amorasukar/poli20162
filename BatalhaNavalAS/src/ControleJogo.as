@@ -65,10 +65,10 @@
 			
 			this.delay = new Timer(1000);
 			
-			this.fala = this.fala_txt;
-			this.enviar = this.enviar_btn;
-			this.fala.addEventListener(Event.CHANGE, this.habilitarEnviar);
-			this.enviar.addEventListener(MouseEvent.MOUSE_UP, this.enviarTexto);
+			// this.fala = this.fala_txt;
+			// this.enviar = this.enviar_btn;
+			//this.fala.addEventListener(Event.CHANGE, this.habilitarEnviar);
+			//this.enviar.addEventListener(MouseEvent.MOUSE_UP, this.enviarTexto);
 			
 			
 			//-----------------------------//
@@ -83,21 +83,21 @@
 		}
 		
 		private function habilitarEnviar(e:Event):void{
-			if (this.fala.text != "") {
+			/* if (this.fala.text != "") {
 				this.enviar.enabled = true;
 			}
 			else {
 				this.enviar.enabled = false;
-			}
+			}*/ 
 		}
 		
 		private function enviarTexto(e:MouseEvent):void{
 			var msg:Mensagem = new Mensagem();			
-			msg.texto = this.fala.text;
+			//msg.texto = this.fala.text;
 			msg.tipo = "conversaJogo";
 			this.comunicacao.send( msg.criarXML() );
-			this.fala.text = "";
-			this.enviar.enabled = false;
+			//this.fala.text = "";
+			// this.enviar.enabled = false;
 		}
 		
 		public function receberFala(remetente:String, fala:String):void {
@@ -148,13 +148,13 @@
 		}
 		
 		private function verificarTipoOponente():void{
-			if (this.oponente.nome == "Computador") {
+			/* if (this.oponente.nome == "Computador") {
 				this.fala.enabled =
 				this.fala.editable =
 				this.fala.mouseEnabled = false;	
 				Computador(this.oponente).criarInteligencia(oponenteTabuleiro);				
 				this.iniciarJogo();
-			}else {
+			}else { */
 				var frota:Mensagem = new Mensagem();
 				frota.tipo = "frota";
 				for (var i:int = 0; i < this.meuTabuleiro.frota.length; i++) {
@@ -173,7 +173,7 @@
 					
 							
 				this.comunicacao.send(frota.criarXML());
-			}
+			// }
 		}
 		
 		public function iniciarJogo():void{

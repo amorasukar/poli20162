@@ -62,15 +62,15 @@
 			/*Botoes*/
 			this.sair = this.sair_btn;
 			this.sair.addEventListener(MouseEvent.MOUSE_UP, this.clicarSair);
-			this.enviar = this.enviar_btn;
+			// this.enviar = this.enviar_btn;
 			this.iniciarJogo = this.iniciarJogo_btn;
 			this.iniciarJogo.addEventListener(MouseEvent.MOUSE_UP, pressionarIniciarJogo);
-			this.enviar.addEventListener(MouseEvent.MOUSE_UP, this.enviarTexto);
+			// this.enviar.addEventListener(MouseEvent.MOUSE_UP, this.enviarTexto);
 			/*Fim de Botoes*/
 			
 			this.log = this.log_txt;
-			this.fala = this.fala_txt;
-			this.fala.addEventListener(Event.CHANGE, this.habilitarEnviar);
+			// this.fala = this.fala_txt;
+			// this.fala.addEventListener(Event.CHANGE, this.habilitarEnviar);
 			
 			this.frota = new Array();
 			
@@ -90,21 +90,21 @@
 		}
 		
 		private function habilitarEnviar(e:Event):void{
-			if (this.fala.text != "") {
+			/*if (this.fala.text != "") {
 				this.enviar.enabled = true;
 			}
 			else {
 				this.enviar.enabled = false;
-			}
+			}*/
 		}
 		
 		private function enviarTexto(e:MouseEvent):void{
 			var msg:Mensagem = new Mensagem();			
-			msg.texto = this.fala.text;
+			//msg.texto = this.fala.text;
 			msg.tipo = "conversaFrota";
 			this.comunicacao.send( msg.criarXML() );
-			this.fala.text = "";
-			this.enviar.enabled = false;
+			//this.fala.text = "";
+			//this.enviar.enabled = false;
 		}
 		
 		public function receberFala(remetente:String, fala:String):void {
@@ -146,16 +146,17 @@
 		
 		public function habilitar(novoEstado:Boolean):void {
 			
+			/*
 			if (novoEstado) {
 				if (this.fala.text != "") {
 					this.enviar.enabled = 
 					this.enviar.mouseEnabled = novoEstado;
 				}
-			}else {
+			}else { *
 				this.enviar.enabled = 
 				this.enviar.mouseEnabled = novoEstado;
-			}
-			this.fala.editable =
+			} */
+			// this.fala.editable =
 			this.sair.enabled = 
 			this.sair.mouseEnabled =
 			this.iniciarJogo.mouseEnabled =
@@ -163,11 +164,11 @@
 		}
 		
 		private function configurar():void {
-			if (this.tipoOponente == "Computador") {
-				this.fala.enabled =
-				this.fala.editable =
+			/* if (this.tipoOponente == "Computador") {
+				// this.fala.enabled =
+				 // this.fala.editable =
 				this.fala.mouseEnabled = false;				
-			}
+			} */ 
 
 				this.portaAvioes.addEventListener(EventosBatalhaNaval.SOLTAREMBARCACAO, this.soltarEmbarcacao);
 				this.destroyer.addEventListener(EventosBatalhaNaval.SOLTAREMBARCACAO, this.soltarEmbarcacao);
