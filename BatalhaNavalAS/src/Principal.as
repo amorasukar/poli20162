@@ -250,8 +250,8 @@
 			var tipo:String = this.jogo.tipoResultado;		
 			this.resultado = this.attacharTela("Resultado", true);			
 			this.resultado.configurar(tipo);			
-			this.resultado.addEventListener(EventosBatalhaNaval.CONTINUAR, this.continuarJogando);
-			this.resultado.addEventListener(EventosBatalhaNaval.SAIR, this.sair);
+			//this.resultado.addEventListener(EventosBatalhaNaval.CONTINUAR, this.continuarJogando);
+			//this.resultado.addEventListener(EventosBatalhaNaval.SAIR, this.sair);
 		}
 	}
 }
