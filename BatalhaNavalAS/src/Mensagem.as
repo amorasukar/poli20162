@@ -1,8 +1,7 @@
 ﻿package {
 	
 	/**
-	* ...
-	* @author Lorena Tablada
+	* @author Jessica
 	*/
 	public class Mensagem {
 		private var _nomeCliente:String;
