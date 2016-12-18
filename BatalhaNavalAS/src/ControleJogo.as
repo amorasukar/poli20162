@@ -16,7 +16,6 @@
 		private var meuTabuleiro:Tabuleiro;
 		private var oponenteTabuleiro:Tabuleiro;
 		private var tabuleiros:Array;
-		//private var frota:Frota;
 		private var log:TextArea;
 		/*Fim de elementos do palco*/
 		
@@ -60,44 +59,21 @@
 			
 			this.tabuleiros = [this.meuTabuleiro, this.oponenteTabuleiro];									
 			
-			//this.frota = this.frota_mc;
 			this.log = this.log_txt;				
 			
-			this.delay = new Timer(1000);
+			this.delay = new Timer(1000);			
 			
-			// this.fala = this.fala_txt;
-			// this.enviar = this.enviar_btn;
-			//this.fala.addEventListener(Event.CHANGE, this.habilitarEnviar);
-			//this.enviar.addEventListener(MouseEvent.MOUSE_UP, this.enviarTexto);
-			
-			
-			//-----------------------------//
 			this.meuTabuleiro.liberarClique(false);
 			this.oponenteTabuleiro.liberarClique(false);
 			this.vez = -1;
 			this.jogadaEnviada = false;
-			this.verificarTipoOponente();	
-			//----------------------------//
-						
-						
-		}
-		
-		private function habilitarEnviar(e:Event):void{
-			/* if (this.fala.text != "") {
-				this.enviar.enabled = true;
-			}
-			else {
-				this.enviar.enabled = false;
-			}*/ 
+			this.verificarTipoOponente();		
 		}
 		
 		private function enviarTexto(e:MouseEvent):void{
 			var msg:Mensagem = new Mensagem();			
-			//msg.texto = this.fala.text;
 			msg.tipo = "conversaJogo";
 			this.comunicacao.send( msg.criarXML() );
-			//this.fala.text = "";
-			// this.enviar.enabled = false;
 		}
 		
 		public function receberFala(remetente:String, fala:String):void {
@@ -132,8 +108,7 @@
 		
 		private function informarJogada(e:Event):void {			
 			var tabuleiro:Tabuleiro = Tabuleiro(e.target);			
-			this.oponenteTabuleiro.liberarClique(false);			
-			//this.meuTabuleiro.liberarClique(false);		
+			this.oponenteTabuleiro.liberarClique(false);	
 			this.escreverLog("\n" + this.jogadores[this.vez].nome + " jogou em (" + tabuleiro.ultimaPecaClicada.linha + ", " + tabuleiro.ultimaPecaClicada.coluna + ") ");			
 			if (this.oponente.nome != "Computador" && this.vez == 0 && !this.jogadaEnviada) {
 				var msg:Mensagem = new Mensagem();
@@ -148,32 +123,28 @@
 		}
 		
 		private function verificarTipoOponente():void{
-			/* if (this.oponente.nome == "Computador") {
-				this.fala.enabled =
-				this.fala.editable =
-				this.fala.mouseEnabled = false;	
-				Computador(this.oponente).criarInteligencia(oponenteTabuleiro);				
-				this.iniciarJogo();
-			}else { */
-				var frota:Mensagem = new Mensagem();
-				frota.tipo = "frota";
-				for (var i:int = 0; i < this.meuTabuleiro.frota.length; i++) {
-					var pecas:String = "";
-					for (var j:int = 0; j < this.meuTabuleiro.frota[i].pecas.length; j++) {
-						pecas += (this.meuTabuleiro.frota[i].pecas[j].linha + "," + this.meuTabuleiro.frota[i].pecas[j].coluna);
-						if ( (j + 1) < this.meuTabuleiro.frota[i].pecas.length) {
-							pecas += "#";
-						}
+			var frota:Mensagem = new Mensagem();
+			frota.tipo = "frota";
+			
+			for (var i:int = 0; i < this.meuTabuleiro.frota.length; i++) {
+				var pecas:String = "";
+			
+				for (var j:int = 0; j < this.meuTabuleiro.frota[i].pecas.length; j++) {
+					pecas += (this.meuTabuleiro.frota[i].pecas[j].linha + "," + this.meuTabuleiro.frota[i].pecas[j].coluna);
+				
+					if ( (j + 1) < this.meuTabuleiro.frota[i].pecas.length) {
+						pecas += "#";
 					}
-					if ( (i + 1) < this.meuTabuleiro.frota.length ) {
-						pecas += "%";
-					}
-					frota.embarcacoes += (pecas);
 				}
-					
-							
-				this.comunicacao.send(frota.criarXML());
-			// }
+				
+				if ( (i + 1) < this.meuTabuleiro.frota.length ) {
+					pecas += "%";
+				}
+				
+				frota.embarcacoes += (pecas);
+			}
+				
+			this.comunicacao.send(frota.criarXML());
 		}
 		
 		public function iniciarJogo():void{
