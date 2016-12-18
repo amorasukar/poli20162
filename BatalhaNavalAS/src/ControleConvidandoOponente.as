@@ -35,20 +35,14 @@
 		
 		public function ControleConvidandoOponente(socket:XMLSocket, id:int) {
 			this.jogadores = this.jogadores_dg;
-			// this.destinatarios = this.destinatarios_cb;
 			this.alvo = this.alvo_mc;
 			this.idCliente = id;
 			this.idConvidado = -1;			
 			this.configurarFataGrid();
 			this.comunicacao = socket;
-			//this.fala = this.fala_txt;
-			// this.enviar = this.enviar_btn;
 			this.convidar = this.convidar_btn;
-			// this.jogarPc = this.pc_btn;
 			this.pedirJogadores();	
 			
-			//this.fala.addEventListener(Event.CHANGE, this.habilitarEnviar);
-			// this.enviar.addEventListener(MouseEvent.MOUSE_UP, this.enviarTexto);
 			this.jogadores.addEventListener(Event.CHANGE, this.habilitarConvidar);
 			this.convidar.addEventListener(MouseEvent.MOUSE_UP, this.convidarOponente);
 		}
@@ -57,8 +51,6 @@
 			this.dispatchEvent(new EventosBatalhaNaval(EventosBatalhaNaval.CONVIDANDOPCPASSARTELA));
 			var msg:Mensagem = new Mensagem();
 			msg.tipo = "jogarXPC";
-			//msg.idDestinatario = this.jogadores.selectedItem.Id;
-			//this.idConvidado = msg.idDestinatario;
 			this.comunicacao.send( msg.criarXML() );
 		}
 		
@@ -102,22 +94,7 @@
 						item.Nome = this.jogadores.getItemAt(i).Nome;
 						break;
 					}
-				}
-				//-------------------------------------------//
-				/* if (novoEstado == "Jogando") {
-					
-					for (var j:int = 0; j < this.destinatarios.length; j++) {
-						if ( (this.destinatarios.getItemAt(j).data == item.Id) ) {
-							this.destinatarios.removeItemAt(j);
-							j--;
-							break;
-						}
-					}
-				}
-				else {
-					this.destinatarios.addItem(item);
-				} */
-				
+				}				
 			}
 		}
 		
@@ -127,20 +104,12 @@
 					this.convidar.enabled =
 					this.convidar.mouseEnabled = true;
 				}
-				/*if (this.fala.text != "") {
-					this.enviar.enabled =
-					this.enviar.mouseEnabled = true;
-				}*/
 			}
 			else {
 				this.convidar.enabled = 
 				this.convidar.mouseEnabled = false;
-				//this.enviar.enabled =
-				//this.enviar.mouseEnabled = false;
 			}
-			//this.fala.editable =
 			this.jogadores.selectable = estadoFinal;
-			//this.destinatarios.enabled = estadoFinal;
 		}
 		
 		private function habilitarConvidar(e:Event):void {
@@ -156,28 +125,10 @@
 		
 		private function enviarTexto(e:MouseEvent):void{
 			var msg:Mensagem = new Mensagem();			
-			//msg.texto = this.fala.text;
-			
-			/* if ( this.destinatarios.selectedIndex == 0 ) {
-				msg.tipo = "conversaPublica";
-			}
-			else { */
-				msg.tipo = "conversaPrivada";
-				msg.idDestinatario = this.destinatarios.selectedItem.data;
-			// }			
+			msg.tipo = "conversaPrivada";
+			msg.idDestinatario = this.destinatarios.selectedItem.data;
 			
 			this.comunicacao.send( msg.criarXML() );
-			//this.fala.text = "";
-			//this.enviar.enabled = false;
-		}
-		
-		private function habilitarEnviar(e:Event):void{
-			/*if (this.fala.text != "") {
-				this.enviar.enabled = true;
-			}
-			else {*/
-				//this.enviar.enabled = false;
-			//}
 		}
 		
 		private function pedirJogadores():void {
@@ -200,10 +151,6 @@
 				if ( (novoJogador) || (int(id) == this.idCliente) ) {
 					this.log_txt.text += "-> " + nome + " entrou na sala.\n";
 				}
-				/*
-				if ( (int(id) != this.idCliente) && (estado == "Livre") ) {
-					this.destinatarios.addItem(itemCB);
-				}*/
 			}
 		}
 		
@@ -221,12 +168,6 @@
 		
 		private function removerDestinatario(id:String, nome:String):void {
 			var itemCB:Object = { label: nome, data: id };
-			/* for (var i:int = 0; i < this.destinatarios.length; i++) {
-				if (this.destinatarios.getItemAt(i).data == id) {
-					this.destinatarios.removeItem( this.destinatarios.getItemAt(i) );
-					break;
-				}
-			} */
 		}
 		
 		private function verificarExistencia(item:Object):Boolean {
@@ -263,13 +204,6 @@
 		
 		private function buscarNome(id:String):String {
 			var retorno:String = "";
-			/* for (var i:int = 0; i < this.destinatarios.length; i++) {
-				trace(this.destinatarios.getItemAt(i).data + " == " + id);
-				if (this.destinatarios.getItemAt(i).data == id) {
-					retorno = this.destinatarios.getItemAt(i).label;
-					break;
-				}
-			} */
 			return retorno;
 		}
 		
