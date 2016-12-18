@@ -61,16 +61,11 @@
 			/*Botoes*/
 			this.sair = this.sair_btn;
 			this.sair.addEventListener(MouseEvent.MOUSE_UP, this.clicarSair);
-			// this.enviar = this.enviar_btn;
 			this.iniciarJogo = this.iniciarJogo_btn;
 			this.iniciarJogo.addEventListener(MouseEvent.MOUSE_UP, pressionarIniciarJogo);
-			// this.enviar.addEventListener(MouseEvent.MOUSE_UP, this.enviarTexto);
 			/*Fim de Botoes*/
 			
 			this.log = this.log_txt;
-			// this.fala = this.fala_txt;
-			// this.fala.addEventListener(Event.CHANGE, this.habilitarEnviar);
-			
 			this.frota = new Array();
 			
 			this.inicializarMatriz();
@@ -88,22 +83,10 @@
 			this.apagarPecas(0);
 		}
 		
-		private function habilitarEnviar(e:Event):void{
-			/*if (this.fala.text != "") {
-				this.enviar.enabled = true;
-			}
-			else {
-				this.enviar.enabled = false;
-			}*/
-		}
-		
 		private function enviarTexto(e:MouseEvent):void{
 			var msg:Mensagem = new Mensagem();			
-			//msg.texto = this.fala.text;
 			msg.tipo = "conversaFrota";
 			this.comunicacao.send( msg.criarXML() );
-			//this.fala.text = "";
-			//this.enviar.enabled = false;
 		}
 		
 		public function receberFala(remetente:String, fala:String):void {
@@ -144,18 +127,6 @@
 		}				
 		
 		public function habilitar(novoEstado:Boolean):void {
-			
-			/*
-			if (novoEstado) {
-				if (this.fala.text != "") {
-					this.enviar.enabled = 
-					this.enviar.mouseEnabled = novoEstado;
-				}
-			}else { *
-				this.enviar.enabled = 
-				this.enviar.mouseEnabled = novoEstado;
-			} */
-			// this.fala.editable =
 			this.sair.enabled = 
 			this.sair.mouseEnabled =
 			this.iniciarJogo.mouseEnabled =
@@ -163,15 +134,9 @@
 		}
 		
 		private function configurar():void {
-			/* if (this.tipoOponente == "Computador") {
-				// this.fala.enabled =
-				 // this.fala.editable =
-				this.fala.mouseEnabled = false;				
-			} */ 
-
-				this.portaAvioes.addEventListener(EventosBatalhaNaval.SOLTAREMBARCACAO, this.soltarEmbarcacao);
-				this.destroyer.addEventListener(EventosBatalhaNaval.SOLTAREMBARCACAO, this.soltarEmbarcacao);
-				this.submarino.addEventListener(EventosBatalhaNaval.SOLTAREMBARCACAO, this.soltarEmbarcacao);
+			this.portaAvioes.addEventListener(EventosBatalhaNaval.SOLTAREMBARCACAO, this.soltarEmbarcacao);
+			this.destroyer.addEventListener(EventosBatalhaNaval.SOLTAREMBARCACAO, this.soltarEmbarcacao);
+			this.submarino.addEventListener(EventosBatalhaNaval.SOLTAREMBARCACAO, this.soltarEmbarcacao);
 		}
 		
 		private function posicaoLegal(linha:int, coluna:int, embarcacao:String, orientacao:int = undefined):Boolean {
@@ -285,15 +250,13 @@
 			
 			trace(posicoes)
 			if (movie.pecas.length != posicoes.length) {//quando a embarcacao esta fora do tabuleiro ou parte fora
-				//movie.dispatchEvent(new EventosBatalhaNaval(EventosBatalhaNaval.FORATABULEIRO));
 				movie.voltarPosicaoInicial();
 				
-			}else if(this.verificarPecas(posicoes)) {
-				//movie.dispatchEvent(new EventosBatalhaNaval(EventosBatalhaNaval.FORATABULEIRO));
+			} else if(this.verificarPecas(posicoes)) {
 				movie.voltarPosicaoInicial();
 				trace("colocou embarcacao em cima de outra embarcacao");
 				
-			}else {
+			} else {
 				
 				switch(tipo) {
 					case "P":
