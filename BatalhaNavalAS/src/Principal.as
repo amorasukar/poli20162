@@ -235,8 +235,6 @@
 											break;
 				case "ControleLogin":				tela = new ControleLogin(this.socket);											
 											break;
-				case "ControleRegras": 				tela = new ControleRegras();
-											break;
 				case "ControleDistribuindoFrota": 	tela = new ControleDistribuindoFrota(this.socket, this.id, this.oponente.nome);
 											break;
 				case "ControleConvidandoOponente": 	tela = new ControleConvidandoOponente(this.socket, this.id);
