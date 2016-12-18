@@ -54,8 +54,6 @@
 												break;
 									
 				case "respostaConecta": 		this.id = int(xml.idCliente);
-												//this.irParaConvidandoOponente();
-												
 												break;
 									
 				case "respostaPedidoJogadores": this.preencherDataGrid(xml.texto);
@@ -202,18 +200,11 @@
 		private function irParaConvidandoOponente(e:Event = null):void {			
 			this.convidandoOponente = this.attacharTela("ControleConvidandoOponente", true);
 			this.convidandoOponente.addEventListener(EventosBatalhaNaval.CONVIDANDOOPONENTEPASSARTELA, this.irParaDistribuindoFrota);
-			this.convidandoOponente.addEventListener(EventosBatalhaNaval.CONVIDANDOPCPASSARTELA, this.setOponenteComputador);
-		}
-		
-		private function setOponenteComputador(e:Event):void {
-			this.oponente = new Computador("Computador");
-			this.irParaDistribuindoFrota();
 		}
 		
 		private function irParaDistribuindoFrota(e:Event = null):void {	
 			this.eu = new Humano(this.login.nome, this.login.senha);
-			if(this.oponente == null)this.oponente = new Jogador(this.convidandoOponente.nomeOponente);//VERIFICAR ISTO DEPOIS;
-			//this.eu.senha = this.login.senha;
+			if(this.oponente == null)this.oponente = new Jogador(this.convidandoOponente.nomeOponente);
 			this.distribuindoFrota = this.attacharTela("ControleDistribuindoFrota", true);
 			this.distribuindoFrota.addEventListener(EventosBatalhaNaval.SAIR, this.sair);
 			this.distribuindoFrota.addEventListener(EventosBatalhaNaval.INICIARJOGO, this.irParaJogo);

@@ -159,7 +159,6 @@
 			if (this.jogadores[this.vez].nome == "Computador") {
 				this.revalorarDelay();
 				this.delay.start();
-				this.delay.addEventListener(TimerEvent.TIMER, this.jogarComputador);
 			}else {
 				trace("else");
 				this.liberarJogada();
@@ -181,45 +180,23 @@
 			}			
 			else {				
 				this.oponenteTabuleiro.liberarClique(false);
-				if (this.jogadores[this.vez].nome == "Computador") {
-					this.revalorarDelay();
-					this.delay.start();
-					this.delay.addEventListener(TimerEvent.TIMER, this.jogarComputador);
-				}
 			}			
-		}
-		
-		private function jogarComputador(e:Event):void {
-			this.delay.removeEventListener(TimerEvent.TIMER, this.jogarComputador);			
-			var jogadaOponente:Jogada = Computador(this.oponente).escolherJogada();
-			this.meuTabuleiro.pecas[jogadaOponente.linha][jogadaOponente.coluna].clicar();			
 		}
 		
 		private function acertarAgua(e:Event):void {
 			trace("método acertarAgua");
-			if (this.vez == 1 && this.oponente.nome == "Computador") {
-				Computador(this.oponente).acertarAgua();				
-			}
-
-			
 			this.escreverLog("e não atingiu nenhuma peça de nenhuma embarcação de " + this.jogadores[(1 - this.vez)].nome + ".");
 			this.passarVez();
 		}
 		
 		private function atingirPeca(e:Event):void {
 			trace("método atingirPeca");
-			if (this.vez == 1 && this.oponente.nome == "Computador") {
-				Computador(this.oponente).atingirPeca();
-			}
 			this.escreverLog("e atingiu uma peça de uma embarcação de " + this.jogadores[(1-this.vez)].nome + ".");
 			this.continuarVez();
 		}
 		
 		private function abaterEmbarcacao(e:Event):void {
 			trace("método abaterEmbarcacao");
-			if (this.vez == 1 && this.oponente.nome == "Computador") {				
-				Computador(this.oponente).abaterEmbarcacao(this.meuTabuleiro.ultimaEmbarcacaoAbatida);				
-			}
 			this.escreverLog(" e abateu um " + this.tabuleiros[(1 - this.vez)].ultimaEmbarcacaoAbatida.nome + " de " + this.jogadores[(1 - this.vez)].nome + ".");			
 			if(!this.tabuleiros[(1 - this.vez)].terminou) {
 				this.continuarVez();

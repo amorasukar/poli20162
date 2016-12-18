@@ -22,7 +22,6 @@
 		private var enviar:Button;
 		private var convidar:Button;
 		private var alvo:MovieClip;
-		private var jogarPc:Button;
 		
 		/*Caixas*/
 		private var idConvidado:int;
@@ -45,13 +44,6 @@
 			
 			this.jogadores.addEventListener(Event.CHANGE, this.habilitarConvidar);
 			this.convidar.addEventListener(MouseEvent.MOUSE_UP, this.convidarOponente);
-		}
-		
-		private function jogarContraPC(e:MouseEvent):void {
-			this.dispatchEvent(new EventosBatalhaNaval(EventosBatalhaNaval.CONVIDANDOPCPASSARTELA));
-			var msg:Mensagem = new Mensagem();
-			msg.tipo = "jogarXPC";
-			this.comunicacao.send( msg.criarXML() );
 		}
 		
 		private function convidarOponente(e:MouseEvent):void {
